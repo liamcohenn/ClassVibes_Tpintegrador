@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CV_TPINTEGRADOR</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/aaaaaa.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+        <div class="logo">
+            <a href="@Url.Action("Index", "Home")">
+            <img src="~/img/Logo.jpg" alt="Class Vibes Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="@Url.Action("Comunidad", "Home")">Comunidad</a></li>
+            <li><a href="@Url.Action("Cursos", "Home")">Cursos</a></li>
+            <li><a href="@Url.Action("Profesores", "Home")">Profesores</a></li>
+        </ul>
+        <div class="profile">
+            <a href="@Url.Action("Login", "Account")">
+            <img src="~/img/iconoperfil.svg" alt="Profile Image">
+            </a>
+        </div>
+        <div class="search-icon">
+            <input type="text" placeholder="Buscar...">
+        </div>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <img src="~/img/3barrasMenu.svg" alt="Profile Image">
+    </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - ClassVibes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

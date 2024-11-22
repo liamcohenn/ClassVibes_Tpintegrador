@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "MiPerfil";
+    @model Usuario
+}
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>Mi Perfil</h2>
+    </div>
+    
+    <div class="profile-content">
+
+        <div class="profile-picture">
+            <img src="~/images/profile-placeholder.jpg" alt="Foto de perfil" class="profile-img">
+            <button class="edit-button">Editar</button>
+        </div>
+        
+        <form class="profile-form">
+            <label>Fecha de nacimiento</label>
+            <div class="date-select">
+                <select name="day">
+                    <option>Día</option>
+                    @for (int i = 1; i <= 31; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <select name="month">
+                    <option>Mes</option>
+                    @for (int i = 1; i <= 12; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <select name="year">
+                    <option>Año</option>
+                    @for (int i = DateTime.Now.Year; i >= 1900; i--)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+            
+            <div>
+            <label>Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="@Model.Nombre" disabled />
+        </div>
+        <div>
+            <label>Género</label>
+            <input type="text" id="genero" name="genero" value="@Model.Genero" disabled />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <textarea id="descripcion" name="descripcion" disabled></textarea>
+        </div>
+
+        <button type="submit" id="guardar" style="display: none;">Guardar</button>
+        </form>
+    </div>
+</div>

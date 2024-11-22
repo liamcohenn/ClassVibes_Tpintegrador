@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Reseñas";
+}
+<div class="header">
+        <button class="filter-button">Fecha: Más recientes</button>
+        <button class="filter-button">Valoración más alta</button>
+        <button class="filter-button">Filtrar</button>
+         <!-- Botón para mostrar el formulario de creación -->
+    <button id="btn-crear-reseña">Crear reseña</button>
+
+    <!-- Formulario oculto por defecto -->
+    <form id="crear-reseña-form" action="/Home/Reseñas" method="post" style="display: none;">
+        <textarea name="texto" placeholder="Escribe tu reseña aquí..." required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+
+
+    <!-- Lista de reseñas -->
+    <div class="reviews-container">
+        @if (ViewBag.Reseñas != null)
+        {
+            foreach (var reseña in ViewBag.Reseñas)
+            {
+                <div class="review-card">
+                    <p class="review-text">"@reseña.Texto"</p>
+                </div>
+            }
+        }
+    </div>
+    <script>
+        // Mostrar el formulario de creación al hacer clic en el botón
+        document.getElementById("btn-crear-reseña").addEventListener("click", function () {
+            document.getElementById("crear-reseña-form").style.display = "block";
+        });
+    </script>

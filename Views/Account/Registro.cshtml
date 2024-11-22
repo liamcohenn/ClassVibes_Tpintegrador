@@ -1,0 +1,54 @@
+@{
+    ViewBag.Title = "Registro";
+}
+
+<h2>Registro de Usuario</h2>
+
+<form asp-action="Registro" method="post" id="FormRegistro">
+    <label for="UserName">Nombre de usuario</label>
+    <input type="text" name="UserName" required />
+
+    <label for="Contraseña">Contraseña</label>
+    <input type="password" name="Contraseña" id="contraseña" required />
+
+    <label for="contraConfirmada">Confirmar Contraseña</label>
+    <input type="password" name="contraConfirmada" id="contraConfirmada" required />
+
+    <label for="Nombre">Nombre</label>
+    <input type="text" name="Nombre" required />
+
+    <label for="Email">Correo Electrónico</label>
+    <input type="email" name="Email" required />
+
+    <label for="Telefono">Teléfono</label>
+    <input type="text" name="Telefono" required />
+
+    <label for="Edad">Edad</label>
+    <input type="number" name="Edad" required />   
+    
+    <button type="submit">Registrarse</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+
+<script>
+    document.getElementById("registerForm").onsubmit = function() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden.");
+            return false;
+        }
+
+        if (password.length < 8) {
+            alert("La contraseña debe tener al menos una letra mayúscula, un carácter especial y al menos 8 caracteres.");
+            return false;
+        }
+
+        return true;
+    };
+</script>

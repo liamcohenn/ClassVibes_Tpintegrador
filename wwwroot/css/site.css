@@ -1,0 +1,304 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 2em;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  width: 90px;
+  height: auto;
+  margin-right: 1.5em;
+}
+
+.nav-links {
+
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-right: auto;
+}
+
+.nav-links li {
+
+  margin-left: 1em;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  color: #000;
+  background-color: #05ed9a;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+  margin-top: 5px;
+  background-color: #05ed9a;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 1em;
+}
+
+.search-container input {
+  padding: 0.5em;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  padding-right: 2.5em;
+}
+
+.search-container button {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.menu-toggle {
+  display: none; /* Mostrar solo en dispositivos móviles si es necesario */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+/*CSS mi perfil*/
+.profile-container {
+    width: 600px;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-header {
+    background-color: #0072ff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-content {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.edit-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #0072ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #005bb5;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.date-select {
+    display: flex;
+    gap: 10px;
+}
+
+select, input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+
+
+.rectangle7 {
+  margin-left: -312px;
+  height: 476px;
+  width: 1920px;
+  background: linear-gradient(90deg, #05dd9a, #126edd);
+  filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+  background-size: 200% 100%; /* Doble del ancho para movimiento suave */
+  background: linear-gradient(90deg, #126edd, #05dd9a ); /* Repetir el fondo para que no se note el reinicio */
+  animation: gradientAnimation 8s linear infinite;
+  transition: all;
+}
+
+/* Animación continua */
+@keyframes gradientAnimation {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 0%;
+  }
+}
+
+
+.rectangle7 h1 {
+text-align: center;
+padding-top: 200px;
+font-size: 50px;
+font-family: "Chau Philomene One";
+}
+
+.card{
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+
+/*CSS RESEÑAS*/
+filter-button, .create-review-button {
+  background-color: #d3d3d3;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-button:hover, .create-review-button:hover {
+  background-color: #c0c0c0;
+}
+
+/*CSS PROFESORES*/
+/* General layout */
+.filters-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* Layout for professors */
+.profesor-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 75%;
+  justify-content: flex-start;
+}
+
+/* Card for profile photo */
+.profesor-foto-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profesor-foto-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Card for professor details */
+.profesor-info-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  flex: 1;
+  max-width: 300px;
+}
+
+.profesor-info-card h5 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profesor-info-card p {
+  font-size: 0.9em;
+  color: #555;
+  margin: 5px 0;
+}

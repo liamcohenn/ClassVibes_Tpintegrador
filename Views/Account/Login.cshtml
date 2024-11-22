@@ -1,0 +1,23 @@
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Iniciar Sesión</h2>
+
+<form asp-action="Login" method="post" id="FormLogin">
+    <label for="UserName">Nombre de usuario</label>
+    <input type="text" name="UserName" required />
+    
+    <label for="Contraseña">Contraseña</label>
+    <input type="password" name="Contraseña" id="contraseña" required />
+    
+    <button type="submit">Iniciar Sesión</button>
+
+    <p><a href="@Url.Action("Registro", "Account")">¿Eres nuevo? Regístrate</a></p>
+    <p><a href="@Url.Action("OlvideContraseña", "Account")">Olvidé mi contraseña</a></p>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
