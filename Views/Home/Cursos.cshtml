@@ -9,15 +9,15 @@
             <h3>Valoraciones</h3>
             <div>
                 <input type="radio" id="rating4" name="rating" value="4">
-                <label for="rating4">4 o más</label>
+                <label for="rating4">★★★★ 4 o más</label>
             </div>
             <div>
                 <input type="radio" id="rating3" name="rating" value="3">
-                <label for="rating3">3 o más</label>
+                <label for="rating3">★★★ 3 o más</label>
             </div>
             <div>
                 <input type="radio" id="rating2" name="rating" value="2">
-                <label for="rating2">2 o más</label>
+                <label for="rating2">★★ 2 o más</label>
             </div>
         </div>
 
@@ -62,17 +62,29 @@
     </form>
 </div>
 
+<main class="main-cursos">
     @foreach (var curso in ViewBag.Cursos)
     {
-        <div class="col-md-4">
-            <div class="curso-card">
-                <img src="@profesor.fotoPerfil" alt="Foto de @profesor.Nombre">
-                <h5>Nombre: @profesor.Nombre</h5>
-                <p>Materia: @profesor.Materia</p>
-                <p>Calificación: @profesor.Valoracion/5</p>
-                <p>Cursos dictados: @profesor.CantCursos</p>
-                <p>Estudiantes: @profesor.CantAlumnos</p>
-            </div>
+        <div class="curso-card">
+            <!-- Imagen del curso -->
+            <img src="@curso.fotoCurso" alt="@curso.Materia" class="curso-imagen">
+
+            <!-- Detalle del curso -->
+            <div class="curso-detalle">
+                <!-- Materia y descripción -->
+                <h4>@curso.Nombre</h4>
+                <p>@curso.Descripcion</p>
+
+                <!-- Valoración debajo de la imagen -->
+                <p class="valoracion">Valoración: ★ @curso.Valoracion</p>
+
+                <!-- Precio y botón -->
+                <p class="precio">@curso.Precio $US</p>
+                <ul class="btn-comprar">
+                    <a href="@Url.Action("ComprarCurso", "Home")">Comprar Curso</a>
+                </ul>
+            </div>>
         </div>
-        
     }
+</main>
+   

@@ -1,6 +1,7 @@
 public class Cursos
 {
     public int idCurso { get; set; }
+    public string Nombre { get; set; }
     public double Precio { get; set; }
     public string MetodoPago { get; set; }
     public int idProfesor { get; set; }

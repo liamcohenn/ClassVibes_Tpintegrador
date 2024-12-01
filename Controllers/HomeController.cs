@@ -26,6 +26,15 @@ public class HomeController : Controller
         ViewBag.Cursos = BD.ListarCursos();
         return View();
     }
+    public IActionResult ComprarCurso(int idCurso)
+    {
+        ViewBag.CursoAComprar = BD.ObtenerCurso(idCurso);
+        return View();
+    }
+    public IActionResult CursoComprado()
+    {
+        return View();
+    }
     public IActionResult Profesores()
     {
         ViewBag.Profesores = BD.ListarProfesores();

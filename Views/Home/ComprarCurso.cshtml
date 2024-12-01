@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "ComprarCurso";
+}
+@foreach (var cursoComprar in ViewBag.CursoAComprar)
+{
+    <div class="curso-card">
+        <!-- Imagen del curso -->
+        <img src="@cursoComprar.fotoCurso" alt="@cursoComprar.Materia" class="curso-imagen">
+
+        <!-- Detalle del curso -->
+        <div class="curso-detalle">
+            <!-- Materia y descripción -->
+            <h4>@cursoComprar.Nombre</h4>
+            <p>@cursoComprar.Descripcion</p>
+
+            <!-- Valoración debajo de la imagen -->
+            <p class="valoracion">Valoración: ★ @cursoComprar.Valoracion</p>
+
+            <!-- Precio y botón -->
+            <p class="precio">@cursoComprar.Precio $US</p>
+        </div>>
+    </div>
+}
+
+<form>
+    <label>
+        <input type="radio" name="metodoPago" value="Tarjeta débito/crédito" /> Tarjeta débito/crédito
+    </label><br />
+    <label>
+        <input type="radio" name="metodoPago" value="Paypal" /> Paypal
+    </label><br />
+
+    <button type="submit" class="btn btn-primary">Completar pago</button>
+    </form>
