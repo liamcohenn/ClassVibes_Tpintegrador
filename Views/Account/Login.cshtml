@@ -3,7 +3,7 @@
 }
 
 <h2>Iniciar Sesión</h2>
-
+<div class="form-registrologin">
 <form asp-action="Login" method="post" id="FormLogin">
     <label for="UserName">Nombre de usuario</label>
     <input type="text" name="UserName" required />
@@ -16,7 +16,7 @@
     <p><a href="@Url.Action("Registro", "Account")">¿Eres nuevo? Regístrate</a></p>
     <p><a href="@Url.Action("OlvideContraseña", "Account")">Olvidé mi contraseña</a></p>
 </form>
-
+</div>
 @if (ViewBag.Message != null)
 {
     <p>@ViewBag.Message</p>

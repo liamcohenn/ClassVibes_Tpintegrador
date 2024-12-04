@@ -35,22 +35,22 @@ public class HomeController : Controller
         var cursos = BD.ListarCursos();
 
         // Filtrar por valoraciones
-    if (!string.IsNullOrEmpty(rating) && int.TryParse(rating, out int minRating))
-    {
-        cursos = cursos.Where(c => c.Valoracion >= minRating).ToList();
-    }
+        if (!string.IsNullOrEmpty(rating) && int.TryParse(rating, out int minRating))
+        {
+            cursos = cursos.Where(c => c.Valoracion >= minRating).ToList();
+        }
 
-    // Filtrar por año
-    cursos = cursos.Where(c => c.AnioSecundaria == año).ToList();
+        // Filtrar por año
+        cursos = cursos.Where(c => c.AnioSecundaria == año).ToList();
 
-    // Filtrar por materias
-    if (subject != null && subject.Length > 0)
-    {
-        cursos = cursos.Where(c => subject.Contains(c.Materia)).ToList();
-    }
+        // Filtrar por materias
+        if (subject != null && subject.Length > 0)
+        {
+            cursos = cursos.Where(c => subject.Contains(c.Materia)).ToList();
+        }
 
-    // Pasar los cursos filtrados a la vista
-    ViewBag.Cursos = cursos;
+        // Pasar los cursos filtrados a la vista
+        ViewBag.Cursos = cursos;
         return View();
     }
     public IActionResult ComprarCurso(int idCurso)
@@ -59,10 +59,12 @@ public class HomeController : Controller
         ViewBag.CursoAComprar = curso;
         return View();
     }
-    public IActionResult CursoComprado()
-    {
-        return View();
-    }
+        public IActionResult CursoComprado(int idCurso)
+        {
+            var curso = BD.ObtenerCurso(idCurso);
+            ViewBag.CursoComprado = curso;
+            return View();
+        }
     public IActionResult Profesores()
     {
         ViewBag.Profesores = BD.ListarProfesores();

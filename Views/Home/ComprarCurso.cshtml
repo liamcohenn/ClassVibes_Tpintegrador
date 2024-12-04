@@ -31,7 +31,6 @@
             <p class="total-pago">Pago: <strong>@cursoComprar.Precio $US</strong></p>
             <button class="btn-completar" onclick="finalizarPago(@cursoComprar.idCurso)">
                 <a href="@Url.Action("CursoComprado", "Home", new { idCurso = @cursoComprar.idCurso })">Completar pago</a>
-            
             </button>
         </div>
     </div>

@@ -8,12 +8,14 @@ public class Cursos
     public string Materia { get; set; }
     public int AnioSecundaria { get; set; }
     public double Valoracion { get; set; }
+    public int cantAlumnos { get; set; }
     public string fotoCurso { get; set; }
     public string Descripcion { get; set; }
+    public string videoCurso { get; set; }
 
     public Cursos() { }
 
-    public Cursos(int idcurso, double precio, string metodopago, int idprofesor, string materia, int aniosecundaria, double valoracion, string fotocurso, string descripcion)
+    public Cursos(int idcurso, double precio, string metodopago, int idprofesor, string materia, int aniosecundaria, double valoracion, string fotocurso, string descripcion, string nombre, int cantalumnos, string videocurso)
     {
         idCurso = idcurso;
         Precio = precio;
@@ -24,5 +26,8 @@ public class Cursos
         Valoracion = valoracion;
         fotoCurso = fotocurso;
         Descripcion = descripcion;
+        Nombre = nombre;
+        cantAlumnos = cantalumnos;
+        videoCurso = videocurso;    
     }
 }

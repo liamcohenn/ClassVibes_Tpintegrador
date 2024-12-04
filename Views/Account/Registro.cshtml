@@ -3,7 +3,7 @@
 }
 
 <h2>Registro de Usuario</h2>
-
+<div class="form-registrologin">
 <form asp-action="Registro" method="post" id="FormRegistro">
     <label for="UserName">Nombre de usuario</label>
     <input type="text" name="UserName" required />
@@ -26,9 +26,31 @@
     <label for="Edad">Edad</label>
     <input type="number" name="Edad" required />   
     
+    <!-- Fecha de nacimiento -->
+    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+    <input type="date" name="fechaNacimiento" id="fechaNacimiento" required />
+
+    <!-- Género -->
+    <label for="Genero">Género</label>
+    <select name="Genero" id="Genero" required>
+        <option value="">Seleccione...</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+        <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+    </select>
+
+    <!-- Año de secundaria -->
+    <label for="AnioSecundaria">Año de Secundaria</label>
+    <input type="number" name="AnioSecundaria" id="AnioSecundaria" min="1" max="6" required />
+
+    <!-- Foto de perfil -->
+    <label for="fotoPerfil">Foto de Perfil</label>
+    <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*" />
+
     <button type="submit">Registrarse</button>
 </form>
-
+</div>
 @if (ViewBag.Message != null)
 {
     <p>@ViewBag.Message</p>

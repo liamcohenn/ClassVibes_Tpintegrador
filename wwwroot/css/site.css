@@ -114,6 +114,81 @@ body {
   height: 70px;
   border-radius: 50%;
 }
+
+/*CSS REGISTRO*/
+/* Estilo general para el contenedor del formulario */
+.form-registrologin {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  
+}
+/* Estilo para el encabezado */
+.form-registrologin h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px; /* Espacio entre el título y el formulario */
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Labels */
+.form-registrologin label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Inputs y selects */
+.form-registrologin input,
+.form-registrologin select,
+.form-registrologin button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Efecto de focus */
+.form-registrologin input:focus,
+.form-registrologin select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Botón */
+.form-registrologin button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-registrologin button:hover {
+  background-color: #0056b3;
+}
+
+/* Input tipo archivo */
+.form-registrologin input[type="file"] {
+  padding: 5px;
+}
+
+/* Diseño responsivo */
+@media (max-width: 500px) {
+  .form-registrologin {
+      padding: 15px;
+  }
+}
 /*CSS mi perfil*/
 .profile-container {
     width: 600px;
@@ -125,7 +200,7 @@ body {
 }
 
 .profile-header {
-    background-color: #0072ff;
+    background-color: #126edd;
     color: white;
     padding: 20px;
     text-align: center;
@@ -156,7 +231,7 @@ body {
 .edit-button {
     margin-top: 10px;
     padding: 8px 12px;
-    background-color: #0072ff;
+    background-color: #126edd;
     color: white;
     border: none;
     border-radius: 5px;
@@ -164,7 +239,7 @@ body {
 }
 
 .edit-button:hover {
-    background-color: #005bb5;
+    background-color: #126edd;
 }
 
 .profile-form {
@@ -509,4 +584,20 @@ body > .main-cursos {
 
 .btn-completar:hover {
   background-color: #2980b9;
+}
+
+
+/*CSS CursoComprado*/
+.curso-comprado {
+  background-color: #126edd;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.video-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }

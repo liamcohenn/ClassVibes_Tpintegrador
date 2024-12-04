@@ -1,4 +1,12 @@
 @{
     ViewData["Title"] = "CursoComprado";
 }
-<h1>HOLA</h1>
+<div class="curso-comprado">
+    <h1>Curso comprado</h1>
+</div>
+<div class="video-container">
+    <video width="1000" height="500" controls>
+        <source src="@ViewBag.CursoComprado.videoCurso" type="video/mp4">
+    </video>
+</div>
+<p>Video URL: @ViewBag.CursoComprado.videoCurso</p>

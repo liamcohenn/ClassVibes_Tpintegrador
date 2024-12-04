@@ -1,59 +1,29 @@
 @{
     ViewData["Title"] = "MiPerfil";
-    @model Usuario
+    var usuario = ViewBag.Usuario;
 }
 <div class="profile-container">
     <div class="profile-header">
         <h2>Mi Perfil</h2>
     </div>
     
-    <div class="profile-content">
+    <!-- Sección izquierda: Foto y botón editar -->
+    <div class="perfil-foto">
+        <img src="@usuario.fotoPerfil" alt="Foto de perfil" class="foto-usuario" />
+        <button id="editar-btn">Editar</button>
+    </div>
 
-        <div class="profile-picture">
-            <img src="~/images/profile-placeholder.jpg" alt="Foto de perfil" class="profile-img">
-            <button class="edit-button">Editar</button>
-        </div>
-        
-        <form class="profile-form">
-            <label>Fecha de nacimiento</label>
-            <div class="date-select">
-                <select name="day">
-                    <option>Día</option>
-                    @for (int i = 1; i <= 31; i++)
-                    {
-                        <option value="@i">@i</option>
-                    }
-                </select>
-                <select name="month">
-                    <option>Mes</option>
-                    @for (int i = 1; i <= 12; i++)
-                    {
-                        <option value="@i">@i</option>
-                    }
-                </select>
-                <select name="year">
-                    <option>Año</option>
-                    @for (int i = DateTime.Now.Year; i >= 1900; i--)
-                    {
-                        <option value="@i">@i</option>
-                    }
-                </select>
-            </div>
-            
-            <div>
-            <label>Nombre</label>
-            <input type="text" id="nombre" name="nombre" value="@Model.Nombre" disabled />
-        </div>
-        <div>
-            <label>Género</label>
-            <input type="text" id="genero" name="genero" value="@Model.Genero" disabled />
-        </div>
-        <div>
-            <label>Descripción</label>
-            <textarea id="descripcion" name="descripcion" disabled></textarea>
-        </div>
+    <!-- Sección derecha: Datos del usuario -->
+    <div class="perfil-datos">
+        <form id="perfil-form">
+            <!-- Nombre -->
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="@usuario.Nombre" required />
 
-        <button type="submit" id="guardar" style="display: none;">Guardar</button>
+
+            <!-- Descripción -->
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" rows="4">@usuario.Descripcion</textarea>
         </form>
     </div>
 </div>
