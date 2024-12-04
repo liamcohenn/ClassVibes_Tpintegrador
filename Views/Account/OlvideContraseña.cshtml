@@ -9,10 +9,10 @@
     <input type="email" name="email" required />
     
     <label for="Password">Nueva Contraseña</label>
-    <input type="password" name="Contraseña" id="contraseña" required />
+    <input type="password" name="nuevaContrasena" id="nuevacontrasena" required />
     
     <label for="ConfirmPassword">Confirmar nueva Contraseña</label>
-    <input type="password" name="ConfirmarContraseña" id="confirmarContraseña" required />
+    <input type="password" name="ConfirmarContrasena" id="confirmarContrasena" required />
     
     <button type="submit">Recuperar Contraseña</button>
 </form>
@@ -21,3 +21,22 @@
 {
     <p>@ViewBag.Message</p>
 }
+
+<script>
+    document.querySelector('form').onsubmit = function() {
+        var nuevaContrasena = document.getElementById('nuevaContrasena').value;
+        var confirmarContrasena = document.getElementById('confirmarContrasena').value;
+
+        if (nuevaContrasena !== confirmarContrasena) {
+            alert("Las contraseñas no coinciden.");
+            return false;
+        }
+
+        if (!/[A-Z]/.test(nuevaContrasena) || !/[!#$%^&*]/.test(nuevaContrasena) || nuevaContrasena.length < 8) {
+            alert("La contraseña debe tener al menos una letra mayúscula, un carácter especial y al menos 8 caracteres.");
+            return false;
+        }
+
+        return true;
+    };
+</script>

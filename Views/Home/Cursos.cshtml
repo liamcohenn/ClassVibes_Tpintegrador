@@ -3,56 +3,29 @@
 }
 
 <div class="filters-container">
-    <form method="get" action="/Home/Profesores" class="filters-form">
+    <form method="get" action="/Home/Cursos" class="filters-form">
         <!-- Filtro de Valoraciones -->
         <div class="filter-section">
             <h3>Valoraciones</h3>
-            <div>
-                <input type="radio" id="rating4" name="rating" value="4">
-                <label for="rating4">★★★★ 4 o más</label>
-            </div>
-            <div>
-                <input type="radio" id="rating3" name="rating" value="3">
-                <label for="rating3">★★★ 3 o más</label>
-            </div>
-            <div>
-                <input type="radio" id="rating2" name="rating" value="2">
-                <label for="rating2">★★ 2 o más</label>
-            </div>
-        </div>
+            <input type="radio" id="rating4" name="rating" value="4"><label for="rating4">4 o más</label><br>
+            <input type="radio" id="rating3" name="rating" value="3"><label for="rating3">3 o más</label><br>
+            <input type="radio" id="rating2" name="rating" value="2"><label for="rating2">2 o más</label><br>
 
         <!-- Filtro de Popularidad -->
         <div class="filter-section">
             <h3>Año de secundario</h3>
-            <div>
-                <input type="radio" id="quintoAño" name="año">
-                <label for="quintoAño">Quinto año</label>
-            </div>
-            <div>
-                <input type="radio" id="cuartoAño" name="año">
-                <label for="cuartoAño">Cuarto año</label>
-            </div>
-            <div>
-                <input type="radio" id="tercerAño" name="año">
-                <label for="tercerAño">Tercer año</label>
-            </div>
+            <input type="radio" id="quinto" name="año" value="5"><label for="quinto">Quinto año</label><br>
+            <input type="radio" id="cuarto" name="año" value="4"><label for="cuarto">Cuarto año</label><br>
+            <input type="radio" id="tercero" name="año" value="3"><label for="tercero">Tercer año</label><br>
+
         </div>
 
         <!-- Filtro de Materias -->
         <div class="filter-section">
             <h3>Materias</h3>
-            <div>
-                <input type="checkbox" id="subjectMath" name="subject" value="Matematica">
-                <label for="subjectMath">Matemática</label>
-            </div>
-            <div>
-                <input type="checkbox" id="subjectPhysics" name="subject" value="Fisica">
-                <label for="subjectPhysics">Física</label>
-            </div>
-            <div>
-                <input type="checkbox" id="subjectProgramming" name="subject" value="Programacion">
-                <label for="subjectProgramming">Programación</label>
-            </div>
+            <input type="checkbox" id="Matematica" name="materia" value="Matematica"><label for="Matematica">Matemática</label><br>
+            <input type="checkbox" id="Fisica" name="materia" value="Fisica"><label for="Fisica">Física</label><br>
+            <input type="checkbox" id="Programacion" name="materia" value="Programacion"><label for="Programacion">Programación</label><br>
         </div>
 
         <!-- Botón de filtro -->

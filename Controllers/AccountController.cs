@@ -12,18 +12,26 @@ public class AccountController : Controller
     {
         _logger = logger;
     }
+
     public IActionResult Login()
     {
+        // Si ya existe una sesión activa, redirige al perfil.
+        if (HttpContext.Session.GetString("user") != null)
+        {
+            return RedirectToAction("MiPerfil");
+        }
         return View();
     }
+
     [HttpPost]
     public IActionResult Login(string username, string contraseña)
     {
         var user = BD.ObtenerUsuario(username, contraseña);
-        ViewBag.Usuario = user;
         if (user != null)
         {
-            return RedirectToAction("MiPerfil"); 
+            // Configura la sesión
+            HttpContext.Session.SetString("user", user.UserName);
+            return RedirectToAction("MiPerfil");
         }
         else
         {
@@ -31,10 +39,12 @@ public class AccountController : Controller
             return View();
         }
     }
+
     public IActionResult Registro()
     {
         return View();
     }
+
     [HttpPost]
     public IActionResult Registro(Usuario usuarioNuevo, string contraConfirmada)
     {
@@ -44,18 +54,19 @@ public class AccountController : Controller
             return View();
         }
 
-        string UserName = " ";
-        usuarioNuevo = BD.RegistrarUsuario(usuarioNuevo, UserName);
+        usuarioNuevo = BD.RegistrarUsuario(usuarioNuevo, usuarioNuevo.UserName);
 
         if (usuarioNuevo != null)
         {
-            ViewBag.mensajeExito = "Registro exitoso. Por favor, inicia sesión.";
+            // Inicia sesión automáticamente tras el registro
+            //HttpContext.Session.SetString("user", usuarioNuevo.UserName);
             return RedirectToAction("Login");
         }
 
         ViewBag.mensajeError = "Error al registrar el usuario.";
-        return RedirectToAction("MiPerfil", "HomeController");
+        return View();
     }
+
     public IActionResult OlvideContraseña()
     {
         return View();
@@ -77,7 +88,7 @@ public class AccountController : Controller
             return View();
         }
 
-        bool actualizado = BD.ActualizarContrasena(usuario.UserName, usuario.Contraseña);
+        bool actualizado = BD.ActualizarContrasena(usuario.Email, nuevaContrasena);
         if (actualizado)
         {
             ViewBag.SuccessMessage = "La contraseña ha sido actualizada exitosamente.";
@@ -90,8 +101,22 @@ public class AccountController : Controller
 
         return View();
     }
+    public IActionResult Logout()
+    {
+        // Elimina la sesión
+        HttpContext.Session.Remove("user");
+        return RedirectToAction("Login");
+    }
+
     public IActionResult MiPerfil()
     {
+        var user = HttpContext.Session.GetString("user");
+        if (user == null)
+        {
+            return RedirectToAction("Login");
+        }
+
+        ViewBag.Usuario = BD.ObtenerUsuarioPorEmail(user);
         return View();
     }
 }

@@ -47,12 +47,12 @@ public static class BD
                 return db.QueryFirstOrDefault<Usuario>(sql, new { pEmail = email });
             }
         }
-        public static bool ActualizarContrasena(string username, string contraseña)
+        public static bool ActualizarContrasena(string email, string contraseña)
         {
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE Usuario SET Contraseña = @contraseña WHERE UserName = @username";
-                int filasAfectadas = db.Execute(sql, new { contraseña, username });
+                string sql = "UPDATE Usuario SET Contraseña = @contraseña WHERE Email = @email";
+                int filasAfectadas = db.Execute(sql, new { contraseña, email });
                 return filasAfectadas > 0;
             }
         }

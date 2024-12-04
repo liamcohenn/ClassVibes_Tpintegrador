@@ -109,7 +109,11 @@ body {
   cursor: pointer;
 }
 
-
+.card-body img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
 /*CSS mi perfil*/
 .profile-container {
     width: 600px;
@@ -317,7 +321,8 @@ filter-button, .create-review-button {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 15px;
+  margin: 10px;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
@@ -391,4 +396,7 @@ body > .main-cursos {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.main-cursos a{
+  color: #fff;
 }

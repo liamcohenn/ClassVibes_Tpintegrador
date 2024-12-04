@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "llEvmbMOyGs=",
+  "dgSpecHash": "nXaVltzyKQg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\liamc\\Documents\\ORT\\4A\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
+  "projectFilePath": "C:\\Users\\liamc\\Documents\\ORT\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\liamc\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\liamc\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\liamc\\Documents\\ORT\\4A\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {}
+    "C:\\Users\\liamc\\Documents\\ORT\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {}
   },
   "projects": {
-    "C:\\Users\\liamc\\Documents\\ORT\\4A\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {
+    "C:\\Users\\liamc\\Documents\\ORT\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\liamc\\Documents\\ORT\\4A\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
+        "projectUniqueName": "C:\\Users\\liamc\\Documents\\ORT\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
         "projectName": "ClassVibes_Tpintegrador",
-        "projectPath": "C:\\Users\\liamc\\Documents\\ORT\\4A\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
+        "projectPath": "C:\\Users\\liamc\\Documents\\ORT\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
         "packagesPath": "C:\\Users\\liamc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\liamc\\Documents\\ORT\\4A\\ClassVibes_Tpintegrador\\obj\\",
+        "outputPath": "C:\\Users\\liamc\\Documents\\ORT\\ClassVibes_Tpintegrador\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\liamc\\AppData\\Roaming\\NuGet\\NuGet.Config",

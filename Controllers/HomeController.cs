@@ -1,6 +1,8 @@
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using aaaaaa.Models;
+
 
 namespace aaaaaa.Controllers;
 
@@ -24,6 +26,31 @@ public class HomeController : Controller
     public IActionResult Cursos()
     {
         ViewBag.Cursos = BD.ListarCursos();
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Cursos(string rating, int año, string[] subject)
+    {
+        // Obtén todos los cursos
+        var cursos = BD.ListarCursos();
+
+        // Filtrar por valoraciones
+    if (!string.IsNullOrEmpty(rating) && int.TryParse(rating, out int minRating))
+    {
+        cursos = cursos.Where(c => c.Valoracion >= minRating).ToList();
+    }
+
+    // Filtrar por año
+    cursos = cursos.Where(c => c.AnioSecundaria == año).ToList();
+
+    // Filtrar por materias
+    if (subject != null && subject.Length > 0)
+    {
+        cursos = cursos.Where(c => subject.Contains(c.Materia)).ToList();
+    }
+
+    // Pasar los cursos filtrados a la vista
+    ViewBag.Cursos = cursos;
         return View();
     }
     public IActionResult ComprarCurso(int idCurso)
