@@ -108,7 +108,7 @@ public class AccountController : Controller
         return RedirectToAction("Login");
     }
 
-    public IActionResult MiPerfil(string username, string contrasena)
+    public IActionResult MiPerfil(string username, string contraseña)
     {
         var user = HttpContext.Session.GetString("user");
         if (user == null)
@@ -116,7 +116,7 @@ public class AccountController : Controller
             return RedirectToAction("Login");
         }
 
-        ViewBag.Usuario = BD.ObtenerUsuario(username, contrasena);
+        ViewBag.Usuario = BD.ObtenerUsuario(username, contraseña);
         return View();
     }
 }

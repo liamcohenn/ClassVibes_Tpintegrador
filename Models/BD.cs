@@ -2,7 +2,7 @@ using System.Data.SqlClient;
 using Dapper;
 public static class BD
 {
-    private static string _connectionString = @"Server=DESKTOP-0T2U3UG\SQLEXPRESS;DataBase=Tp_integrador;Trusted_Connection=true;";
+    private static string _connectionString = @"Server=localhost;DataBase=Tp_integrador;Trusted_Connection=true;";
     public static List<Profesores> _listaProfesores = new List<Profesores>();
     public static List<Reseñas> _listaReseñas = new List<Reseñas>();
     public static List<Cursos> _listaCursos = new List<Cursos>();
