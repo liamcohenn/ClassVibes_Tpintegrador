@@ -55,7 +55,8 @@ public class HomeController : Controller
     }
     public IActionResult ComprarCurso(int idCurso)
     {
-        ViewBag.CursoAComprar = BD.ObtenerCurso(idCurso);
+        var curso = BD.ObtenerCurso(idCurso);
+        ViewBag.CursoAComprar = curso;
         return View();
     }
     public IActionResult CursoComprado()

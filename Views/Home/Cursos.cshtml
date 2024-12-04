@@ -7,9 +7,9 @@
         <!-- Filtro de Valoraciones -->
         <div class="filter-section">
             <h3>Valoraciones</h3>
-            <input type="radio" id="rating4" name="rating" value="4"><label for="rating4">4 o más</label><br>
-            <input type="radio" id="rating3" name="rating" value="3"><label for="rating3">3 o más</label><br>
-            <input type="radio" id="rating2" name="rating" value="2"><label for="rating2">2 o más</label><br>
+            <input type="radio" id="rating4" name="rating" value="4"><label for="rating4">4 o más ★★★★</label><br>
+            <input type="radio" id="rating3" name="rating" value="3"><label for="rating3">3 o más ★★★</label><br>
+            <input type="radio" id="rating2" name="rating" value="2"><label for="rating2">2 o más ★★</label><br>
 
         <!-- Filtro de Popularidad -->
         <div class="filter-section">
@@ -54,7 +54,7 @@
                 <!-- Precio y botón -->
                 <p class="precio">@curso.Precio $US</p>
                 <ul class="btn-comprar">
-                    <a href="@Url.Action("ComprarCurso", "Home")">Comprar Curso</a>
+                    <a href="@Url.Action("ComprarCurso", "Home", new { idCurso = @curso.idCurso })">Comprar Curso</a>
                 </ul>
             </div>>
         </div>
