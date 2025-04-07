@@ -15,7 +15,6 @@ public class AccountController : Controller
 
     public IActionResult Login()
     {
-        // Si ya existe una sesión activa, redirige al perfil.
         if (HttpContext.Session.GetString("user") != null)
         {
             return RedirectToAction("MiPerfil");
@@ -29,8 +28,8 @@ public class AccountController : Controller
         var user = BD.ObtenerUsuario(username, contraseña);
         if (user != null)
         {
-            // Configura la sesión
             HttpContext.Session.SetString("user", user.UserName);
+            HttpContext.Session.SetInt32("useridAlumno", user.idAlumno); // si tenés un ID
             return RedirectToAction("MiPerfil");
         }
         else
@@ -45,7 +44,7 @@ public class AccountController : Controller
         return View();
     }
 
-    [HttpPost]
+     [HttpPost]
     public IActionResult Registro(Usuario usuarioNuevo, string contraConfirmada)
     {
         if (usuarioNuevo.Contraseña != contraConfirmada)
@@ -66,6 +65,7 @@ public class AccountController : Controller
         ViewBag.mensajeError = "Error al registrar el usuario.";
         return View();
     }
+
 
     public IActionResult OlvideContraseña()
     {
@@ -101,22 +101,21 @@ public class AccountController : Controller
 
         return View();
     }
+
     public IActionResult Logout()
     {
-        // Elimina la sesión
-        HttpContext.Session.Remove("user");
+        HttpContext.Session.Clear(); // Limpia toda la sesión
         return RedirectToAction("Login");
     }
 
-    public IActionResult MiPerfil(string username, string contraseña)
+    public IActionResult MiPerfil()
     {
-        var user = HttpContext.Session.GetString("user");
-        if (user == null)
-        {
+        string username = HttpContext.Session.GetString("username"); // o donde lo estés guardando al loguear
+        if (string.IsNullOrEmpty(username))
             return RedirectToAction("Login");
-        }
 
-        ViewBag.Usuario = BD.ObtenerUsuario(username, contraseña);
-        return View();
+        Usuario usuario = BD.ObtenerUsuarioPorUsername(username);
+        return View(usuario);
     }
+
 }

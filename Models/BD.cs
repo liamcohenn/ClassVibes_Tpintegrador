@@ -7,6 +7,18 @@ public static class BD
     public static List<Reseñas> _listaReseñas = new List<Reseñas>();
     public static List<Cursos> _listaCursos = new List<Cursos>();
 
+
+    public static Usuario ObtenerUsuarioPorUsername(string username)
+{
+    using (SqlConnection db = new SqlConnection(_connectionString))
+    {
+        string sql = "SELECT * FROM Usuario WHERE UserName = @username";
+        return db.QueryFirstOrDefault<Usuario>(sql, new { username });
+    }
+}
+
+
+
     public static Usuario ObtenerUsuario(string username, string contraseña)
     {
         using (SqlConnection db = new SqlConnection(_connectionString))
@@ -15,7 +27,6 @@ public static class BD
             return db.QueryFirstOrDefault<Usuario>(sql, new { username = username, contraseña = contraseña });
         }
     }
-
         public static Usuario RegistrarUsuario(Usuario nuevoUsuario, string UserName)
         {
            using (SqlConnection db = new SqlConnection(_connectionString))

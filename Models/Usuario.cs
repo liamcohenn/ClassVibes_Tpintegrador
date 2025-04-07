@@ -1,6 +1,6 @@
 public class Usuario
 {
-public int idAlumno {get; set;}
+    public int idAlumno {get; set;}
     public DateTime fechaNacimiento {get; set;}
     public string Nombre {get; set;}
     public string Genero{get; set;}

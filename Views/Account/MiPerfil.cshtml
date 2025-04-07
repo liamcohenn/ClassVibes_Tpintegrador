@@ -1,29 +1,44 @@
+@model Usuario
 @{
-    ViewData["Title"] = "MiPerfil";
-    var usuario = ViewBag.Usuario;
+    ViewData["Title"] = "Mi Perfil";
 }
-<div class="profile-container">
-    <div class="profile-header">
-        <h2>Mi Perfil</h2>
-    </div>
-    
-    <!-- Sección izquierda: Foto y botón editar -->
-    <div class="perfil-foto">
-        <img src="@usuario.fotoPerfil" alt="Foto de perfil" class="foto-usuario" />
-        <button id="editar-btn">Editar</button>
-    </div>
 
-    <!-- Sección derecha: Datos del usuario -->
-    <div class="perfil-datos">
-        <form id="perfil-form">
-            <!-- Nombre -->
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" value="@usuario.Nombre" required />
+<div class="container mt-4">
+    <div class="card shadow p-4" style="border: 2px solid #007bff;">
+        <h2 class="text-primary">Mi Perfil</h2>
 
+        <div class="row mt-4">
+            <div class="col-md-4 text-center">
+                <img src="@Model.fotoPerfil" class="rounded-circle img-fluid" style="width: 200px; height: 200px; object-fit: cover;" />
+                <br />
+                <a class="btn btn-outline-dark mt-2" href="/Cuenta/EditarPerfil">Editar</a>
+            </div>
 
-            <!-- Descripción -->
-            <label for="descripcion">Descripción</label>
-            <textarea id="descripcion" name="descripcion" rows="4">@usuario.Descripcion</textarea>
-        </form>
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Fecha de nacimiento</label>
+                    <div class="d-flex gap-2">
+                        <input type="text" class="form-control" readonly value="@Model.fechaNacimiento.Day" style="max-width: 80px;" />
+                        <input type="text" class="form-control" readonly value="@Model.fechaNacimiento.Month" style="max-width: 80px;" />
+                        <input type="text" class="form-control" readonly value="@Model.fechaNacimiento.Year" style="max-width: 100px;" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nombre</label>
+                    <input type="text" class="form-control" readonly value="@Model.Nombre" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Género</label>
+                    <input type="text" class="form-control" readonly value="@Model.Genero" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Descripción</label>
+                    <input type="text" class="form-control" readonly value="Alumno de @Model.AnioSecundaria° año - Tel: @Model.Telefono - Email: @Model.Email" />
+                </div>
+            </div>
+        </div>
     </div>
 </div>

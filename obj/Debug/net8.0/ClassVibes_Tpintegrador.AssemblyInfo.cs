@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClassVibes_Tpintegrador")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbd6d878e403aebac873e7ca0881b3913158427a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5161ee04ea9b2746e028b0f4071c1d461aa80ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClassVibes_Tpintegrador")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClassVibes_Tpintegrador")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
