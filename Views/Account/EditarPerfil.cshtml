@@ -1,0 +1,105 @@
+@model Usuario
+@{
+    ViewData["Title"] = "Editar Perfil";
+}
+
+<div class="container mt-4">
+    <form action="EditarPerfil" method="post" class="card shadow p-4" style="border: 2px solid #007bff;" enctype="multipart/form-data">
+
+        <div class="row mt-4">
+        <div class="col-12">
+            <div class="text-primary h2 p-4">Mi Perfil</div>
+        </div>
+        <div class="col-12">
+            @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach (var entry in ViewData.ModelState)
+                            {
+                                foreach (var error in entry.Value.Errors)
+                                {
+                                    <li><strong>@entry.Key</strong>: @error.ErrorMessage</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
+
+        </div>
+            <div class="col-md-4 text-center">
+                <img src="@(string.IsNullOrEmpty(Model.fotoPerfil) ? "/img/avatar.jpg" : Model.fotoPerfil)"
+                class="img-fluid"
+                id="fotoPerfilImg"
+                alt="Foto de perfil"
+                style="width: 200px; height: 200px; object-fit: cover; border-radius: 16px;" />
+
+            <input type="file" name="fotoPerfil" class="form-control mt-2" accept="image/*" id="fotoPerfilInput" />
+
+            <script>
+                document.getElementById("fotoPerfilInput").addEventListener("change", function (event) {
+                    var input = event.target;
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            document.getElementById("fotoPerfilImg").src = e.target.result;
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                });
+            </script>
+
+                <div class="form-text">Formato: JPG, PNG, GIF</div>
+                <input type="hidden" name="idAlumno" value="@Model.idAlumno" />
+            </div>
+
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Fecha de nacimiento</label>
+                    <div class="d-flex gap-2">
+                        <input type="datetime-local" name="fechaNacimiento" value="@Model.fechaNacimiento.ToString("yyyy-MM-ddTHH:mm")" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nombre</label>
+                    <input type="text" class="form-control" name="Nombre" value="@Model.Nombre" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nombre de usuario</label>
+                    <input type="text" class="form-control" name="UserName" value="@Model.UserName" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Género</label>
+                    <select name="Genero" class="form-control">
+                        <option value="m" selected="@(Model.Genero == "m")">Masculino</option>
+                        <option value="f" selected="@(Model.Genero == "f")">Femenino</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Email">Email</label>
+                    <input type="text" class="form-control" name="Email" value="@Model.Email" />
+                </div>
+                <div class="mb-3">
+                    <label for="Telefono">Teléfono</label>
+                    <input type="text" class="form-control" name="Telefono" value="@Model.Telefono" />
+                </div>
+                <div class="mb-3">
+                    <label for="AnioSecundaria">Año de secundaria</label>
+                    <input type="text" class="form-control" name="AnioSecundaria" value="@Model.AnioSecundaria" />
+                </div>
+                <div class="mb-3">
+                    <label for="Contraseña">Contraseña</label>
+                    <input type="password" class="form-control" name="Contraseña" value="@Model.Contraseña" />
+                </div>
+            </div>
+            <div class="col-12">
+                <a href="/Account/MiPerfil" class="btn btn-secondary">Volver</a>
+                <button class="btn btn-success" type="submit">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

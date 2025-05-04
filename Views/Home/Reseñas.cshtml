@@ -1,30 +1,69 @@
 @{
     ViewData["Title"] = "Reseñas";
 }
-<div class="header">
-        <button class="filter-button">Fecha: Más recientes</button>
-        <button class="filter-button">Valoración más alta</button>
-        <button class="filter-button">Filtrar</button>
+<div class="header mt-5 d-flex gap-2 justify-content-between align-items-center">
+        <form method="post" action="/Home/Reseñas" class="filters-form d-flex gap-2">
+            <select name="order" class="form-control" aria-label="Default select example">
+                <option value="asc" selected="@(ViewBag.order == "asc")">Fecha: Mas Antiguos</option>
+                <option value="desc"selected="@(ViewBag.order == "desc")">Fecha: Mas Recientes</option>
+            </select>
+            @* <button class="filter-button btn btn-secondary" type="button">Valoración más alta</button> *@
+            <button type="submit" class="filter-button btn btn-secondary">Filtrar</button>
+        </form>
          <!-- Botón para mostrar el formulario de creación -->
-    <button id="btn-crear-reseña">Crear reseña</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear reseña</button>
 
-    <!-- Formulario oculto por defecto -->
-    <form id="crear-reseña-form" action="/Home/Reseñas" method="post" style="display: none;">
-        <textarea name="texto" placeholder="Escribe tu reseña aquí..." required></textarea>
-        <button type="submit">Enviar</button>
-    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear reseña</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+         <form id="crear-reseña-form" action="/Home/CrearReseña" method="post">
+            <div class="modal-body">
+                <!-- Formulario oculto por defecto -->
+                
+                        <textarea name="texto" placeholder="Escribe tu reseña aquí..." required class="form-control"></textarea>
+                       
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                 <button type="submit" class="btn btn-success">Enviar</button>
+            </div>
+         </form>
+        </div>
+    </div>
+    </div>
 </div>
 
 
 
     <!-- Lista de reseñas -->
-    <div class="reviews-container">
+    <div class="reviews-container row mt-4">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+        }
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+        }
+
         @if (ViewBag.Reseñas != null)
         {
-            foreach (var reseña in ViewBag.Reseñas)
+            foreach (var Reseña in ViewBag.Reseñas)
             {
-                <div class="review-card">
-                    <p class="review-text">"@reseña.Texto"</p>
+                <div class="col-md-4 col-12">
+                    <div class="card" style="height: 300px;border-radius: 16px;">
+                        <div class="px-4 py-3 text-center">
+                            <img src="@(string.IsNullOrEmpty(Reseña.Usuario.fotoPerfil) ? "/img/avatar.jpg" : Reseña.Usuario.fotoPerfil)" alt="Imagen de @Reseña.Usuario.Nombre" style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover;" />
+                            <h4 class="card-subtitle my-2 text-muted">@Reseña.Usuario.Nombre</h4>
+                            <p class="card-text">@Reseña.Texto</p>
+                        </div>
+                    </div>
                 </div>
             }
         }

@@ -2,35 +2,53 @@
     ViewData["Title"] = "ComprarCurso";
     var cursoComprar = ViewBag.CursoAComprar;
 }
+<div style="min-height: 100vh;">
 
-<div class="comprarcurso-detalle">
+<div class="comprarcurso-detalle" >
     <!-- Imagen del curso -->
     <img src="@cursoComprar.fotoCurso" alt="@cursoComprar.Nombre" class="comprarcurso-imagen">
 
     <!-- Nombre y descripción -->
-    <h4>@cursoComprar.Nombre</h4>
-    <p>@cursoComprar.Descripcion</p>
+    <div>
+        <h4>@cursoComprar.Nombre</h4>
+         <p class="comprarcurso-valoracion">Valoración: <span class="text-warning">★</span> @cursoComprar.Valoracion</p>
+         @for(int i = 0; i < cursoComprar.Valoracion; i++)
+        {
+            <span class="estrella text-warning">★</span>
+        }
+        
+        <p>@cursoComprar.Descripcion</p>
+
+    </div>
 
     <!-- Valoración -->
-    <p class="comprarcurso-valoracion">Valoración: ★ @cursoComprar.Valoracion</p>
+   
 
     <!-- Precio -->
-    <p class="precio">@cursoComprar.Precio $US</p>
+    <p class="precio text-black">@cursoComprar.Precio$US</p>
 </div>
     <div class="metodos-pago">
-        <h3>Método de pago:</h3>
-        <label>
-            <input type="radio" name="metodo-pago" value="tarjeta">
-            Tarjeta débito/crédito
-        </label>
-        <label>
-            <input type="radio" name="metodo-pago" value="paypal">
-            PayPal
-        </label>
-        <div class="completar-pago">
-            <p class="total-pago">Pago: <strong>@cursoComprar.Precio $US</strong></p>
-            <button class="btn-completar" onclick="finalizarPago(@cursoComprar.idCurso)">
-                <a href="@Url.Action("CursoComprado", "Home", new { idCurso = @cursoComprar.idCurso })">Completar pago</a>
-            </button>
+        <div class="row">
+            <div class="col-md-6" style="border-right: 1px solid #c2c2c2;">
+                <h3>Método de pago:</h3>
+                <label>
+                    <input type="radio" name="metodo-pago" value="tarjeta">
+                    Tarjeta débito/crédito
+                </label>
+                <label>
+                    <input type="radio" name="metodo-pago" value="paypal">
+                    PayPal
+                </label>
+            </div>
+            <div class="col-md-6">
+                <div class="">
+                    <p class="total-pago ms-0 text-left">Pago:</p>
+                    <div class="text-muted mb-4">Precio:  <strong>@cursoComprar.Precio $US</strong></div>
+                    <a href="@Url.Action("CursoComprado", "Home", new { idCurso = @cursoComprar.idCurso })" class="btn btn-primary w-100" >Completar pago</a>
+                    
+                </div>
+            </div>
         </div>
+        
     </div>
+</div>

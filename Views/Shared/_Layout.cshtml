@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/aaaaaa.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Chau Philomene One', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" style="align-items: baseline;">
         <div class="logo">
             <a href="@Url.Action("Index", "Home")">
             <img src="~/img/Logo.jpg" alt="Class Vibes Logo">
@@ -20,17 +28,21 @@
             <li><a href="@Url.Action("Comunidad", "Home")">Comunidad</a></li>
             <li><a href="@Url.Action("Cursos", "Home")">Cursos</a></li>
             <li><a href="@Url.Action("Profesores", "Home")">Profesores</a></li>
+            <li><a href="@Url.Action("Admin", "Home")">Admin</a></li>
         </ul>
         <div class="profile">
             <a href="@Url.Action("Login", "Account")">
             <img src="~/img/iconoperfil.svg" alt="Profile Image">
             </a>
         </div>
-        <div class="search-icon">
-            <input type="text" placeholder="Buscar...">
+       <div class="search-icon">
+            <form method="get" action="/Home/Buscador" class="d-flex align-items-center gap-2">
+                <input type="text" name="query" placeholder="Buscar..." />
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
         </div>
-        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-        <img src="~/img/3barrasMenu.svg" alt="Profile Image">
+        @* <button class="menu-toggle"><i class="fas fa-bars"></i></button> *@
+        @* <img src="~/img/3barrasMenu.svg" alt="Profile Image"> *@
     </nav>
     </header>
     <div class="container">

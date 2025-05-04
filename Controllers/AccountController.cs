@@ -110,7 +110,8 @@ public class AccountController : Controller
 
     public IActionResult MiPerfil()
     {
-        string username = HttpContext.Session.GetString("username"); // o donde lo estés guardando al loguear
+        string username = HttpContext.Session.GetString("user"); // Cambiado de "username" a "user"
+        
         if (string.IsNullOrEmpty(username))
             return RedirectToAction("Login");
 
@@ -118,4 +119,63 @@ public class AccountController : Controller
         return View(usuario);
     }
 
+    public IActionResult EditarPerfil()
+    {
+        string username = HttpContext.Session.GetString("user");;
+        
+        if (string.IsNullOrEmpty(username))
+            return RedirectToAction("Login");
+
+        Usuario usuario = BD.ObtenerUsuarioPorUsername(username);
+        return View(usuario);
+    }
+
+    [HttpPost]
+    public IActionResult EditarPerfil(Usuario usuario, IFormFile fotoPerfil)
+    {
+        var usuarioActual = BD.ObtenerUsuarioPorUsername(usuario.UserName);
+        if (fotoPerfil != null && fotoPerfil.Length > 0)
+            {
+                string rutaArchivo = Path.Combine("wwwroot/img/", fotoPerfil.FileName);
+
+                using (var stream = new FileStream(rutaArchivo, FileMode.Create))
+                {
+                    fotoPerfil.CopyTo(stream);
+                }
+
+
+                usuario.fotoPerfil = "/img/" + fotoPerfil.FileName;
+        }
+        else if (usuarioActual != null && usuarioActual.fotoPerfil != null){
+            // Si no se subió una nueva foto, mantén la foto actual
+            // ModelState.
+            usuario.fotoPerfil = usuarioActual.fotoPerfil;
+        }
+        else{
+            usuario.fotoPerfil = "/img/default.png"; // o cualquier valor por defecto
+        }
+        if (true)
+        {
+                if (usuario.fechaNacimiento < new DateTime(1753, 1, 1))
+                {
+                    usuario.fechaNacimiento = DateTime.Now; // o cualquier valor por defecto válido
+                }
+
+
+            BD.ActualizarUsuario(usuario);
+            return RedirectToAction("MiPerfil");
+        }
+        else
+        {
+            ViewBag.ErrorMessage = "Error al editar el perfil. Verifica los datos ingresados.";
+            return View(usuario);
+        }
+    }
+
+
+
+    public IActionResult CambiarContraseña()
+    {
+        return View();
+    }
 }

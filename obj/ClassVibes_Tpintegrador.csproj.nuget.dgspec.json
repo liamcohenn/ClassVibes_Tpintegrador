@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\48796139\\Documents\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {}
+    "c:\\Users\\Ezequiel\\Downloads\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {}
   },
   "projects": {
-    "C:\\Users\\48796139\\Documents\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {
+    "c:\\Users\\Ezequiel\\Downloads\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\48796139\\Documents\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
+        "projectUniqueName": "c:\\Users\\Ezequiel\\Downloads\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
         "projectName": "ClassVibes_Tpintegrador",
-        "projectPath": "C:\\Users\\48796139\\Documents\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
-        "packagesPath": "C:\\Users\\48796139\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\48796139\\Documents\\ClassVibes_Tpintegrador\\obj\\",
+        "projectPath": "c:\\Users\\Ezequiel\\Downloads\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador.csproj",
+        "packagesPath": "C:\\Users\\Ezequiel\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Ezequiel\\Downloads\\ClassVibes_Tpintegrador\\ClassVibes_Tpintegrador\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\48796139\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ezequiel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

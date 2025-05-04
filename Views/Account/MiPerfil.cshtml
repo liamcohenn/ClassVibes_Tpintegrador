@@ -5,13 +5,19 @@
 
 <div class="container mt-4">
     <div class="card shadow p-4" style="border: 2px solid #007bff;">
-        <h2 class="text-primary">Mi Perfil</h2>
 
         <div class="row mt-4">
+         <div class="col-12">
+            <div class="text-primary h2 p-4">Mi Perfil</div>
+        </div>
             <div class="col-md-4 text-center">
-                <img src="@Model.fotoPerfil" class="rounded-circle img-fluid" style="width: 200px; height: 200px; object-fit: cover;" />
+                <img src="@(string.IsNullOrEmpty(Model.fotoPerfil) ? "/img/avatar.jpg" : Model.fotoPerfil)"
+                class="img-fluid"
+                id="fotoPerfilImg"
+                alt="Foto de perfil"
+                style="width: 200px; height: 200px; object-fit: cover; border-radius: 16px;" />
                 <br />
-                <a class="btn btn-outline-dark mt-2" href="/Cuenta/EditarPerfil">Editar</a>
+                <a class="btn btn-outline-dark mt-2" href="/Account/EditarPerfil">Editar Perfil</a>
             </div>
 
             <div class="col-md-8">
@@ -31,12 +37,14 @@
 
                 <div class="mb-3">
                     <label class="form-label fw-bold">Género</label>
-                    <input type="text" class="form-control" readonly value="@Model.Genero" />
+                    <input type="text" class="form-control" readonly value="@(Model.Genero == "m" ? "Masculino" : "Femenino")" />
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label fw-bold">Descripción</label>
-                    <input type="text" class="form-control" readonly value="Alumno de @Model.AnioSecundaria° año - Tel: @Model.Telefono - Email: @Model.Email" />
+                    @* <input type="text" class="form-control" readonly value="Alumno de @Model.AnioSecundaria° año - Tel: @Model.Telefono - Email: @Model.Email" /> *@
+                    <textarea name="" readonly id="">Alumno de @Model.AnioSecundaria° año - Tel: @Model.Telefono - Email: @Model.Email
+                    </textarea>
                 </div>
             </div>
         </div>

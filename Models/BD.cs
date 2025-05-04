@@ -16,6 +16,14 @@ public static class BD
         return db.QueryFirstOrDefault<Usuario>(sql, new { username });
     }
 }
+    public static Usuario ObtenerUsuarioPorId(int idAlumno)
+{
+    using (SqlConnection db = new SqlConnection(_connectionString))
+    {
+        string sql = "SELECT * FROM Usuario WHERE idAlumno = @idAlumno";
+        return db.QueryFirstOrDefault<Usuario>(sql, new { idAlumno });
+    }
+}
 
 
 
@@ -78,12 +86,12 @@ public static class BD
         }
 
         // Crea una nueva reseña
-        public static void CrearReseña(string texto)
+        public static void CrearReseña(int idResena,int idAlumno, string texto)
         {
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "INSERT INTO Reseñas (Texto) VALUES (@texto)";
-                db.Execute(sql, new { texto });
+                string sql = "INSERT INTO Reseñas (IdResena,Texto, idAlumno) VALUES (@idResena ,@texto, @idAlumno)";
+                db.Execute(sql, new {  idResena, texto, idAlumno });
             }
         }
 
@@ -117,5 +125,117 @@ public static class BD
                 return db.QueryFirstOrDefault<Cursos>(sql, new { idcurso = idcurso });
             }
         }
+
+        public static void InsertarCurso(Cursos Curso)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = @"
+                    INSERT INTO Cursos (
+                        idCurso,
+                        Nombre,
+                        Precio,
+                        MetodoPago,
+                        idProfesor,
+                        Materia,
+                        AnioSecundaria,
+                        Valoracion,
+                        cantAlumnos,
+                        fotoCurso,
+                        Descripcion,
+                        videoCurso
+                    )
+                    VALUES (
+                        @idCurso,
+                        @Nombre,
+                        @Precio,
+                        @MetodoPago,
+                        @idProfesor,
+                        @Materia,
+                        @AnioSecundaria,
+                        @Valoracion,
+                        @cantAlumnos,
+                        @fotoCurso,
+                        @Descripcion,
+                        @videoCurso
+                    );
+                ";
+
+                db.Execute(sql, Curso);
+            }
+        }
+
+        
+       public static void EliminarCurso(Cursos Curso){
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "DELETE FROM Cursos WHERE idCurso = @idCurso";
+                db.Execute(sql, new { idCurso = Curso.idCurso });
+            }
+       }
+       public static void ActualizarCurso(Cursos Curso)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = @"
+                    UPDATE Cursos
+                    SET 
+                        Nombre = @Nombre,
+                        Precio = @Precio,
+                        MetodoPago = @MetodoPago,
+                        idProfesor = @idProfesor,
+                        Materia = @Materia,
+                        AnioSecundaria = @AnioSecundaria,
+                        Valoracion = @Valoracion,
+                        cantAlumnos = @cantAlumnos,
+                        fotoCurso = @fotoCurso,
+                        Descripcion = @Descripcion,
+                        videoCurso = @videoCurso
+                    WHERE idCurso = @idCurso;
+                ";  
+        
+                db.Execute(sql, Curso);
+            }
+        }
+       public static void ActualizarUsuario(Usuario usuario)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = @"
+                    UPDATE Usuario
+                    SET 
+                        UserName = @UserName,
+                        Contraseña = @Contraseña,
+                        Nombre = @Nombre,
+                        Email = @Email,
+                        Telefono = @Telefono,
+                        Edad = @Edad,
+                        fotoPerfil = @fotoPerfil,
+                        fechaNacimiento = @fechaNacimiento,
+                        Genero = @Genero,
+                        AnioSecundaria = @AnioSecundaria
+                    WHERE idAlumno = @idAlumno;
+                ";
+
+                db.Execute(sql, usuario);
+            }
+        }
+        public static int ObtenerUltimoIdResena()
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT ISNULL(MAX(idResena), 0) FROM RESEÑAS";
+                return db.QuerySingle<int>(sql);
+            }
+        }
+        public static int ObtenerUltimoIdCurso()
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT ISNULL(MAX(idCurso), 0) FROM CURSOS";
+                return db.QuerySingle<int>(sql);
+            }
+        }
+
     
-}    
+}

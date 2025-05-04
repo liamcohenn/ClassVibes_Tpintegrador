@@ -10,14 +10,13 @@ public class Usuario
     public string Email {get; set;}
     public string  Telefono {get; set;}
     public int Edad {get; set;}
-    public string fotoPerfil { get; set; }
+    public string? fotoPerfil { get; set; }
+    public IFormFile? FotoSubida { get; set; }
 
-    public Usuario(){
-
-    }
+    public Usuario() {}
     public Usuario(int idalumno, DateTime fechanacimiento,  string nombre, string genero, int aniosecundaria, string username, string contraseña, string email, string telefono, int edad, string fotoperfil)
     {
-        idAlumno = idalumno;
+        idAlumno = idAlumno;
         fechaNacimiento = fechanacimiento;
         Nombre = nombre;
         Genero = genero;
@@ -29,4 +28,5 @@ public class Usuario
         Edad = edad;
         fotoPerfil = fotoperfil;
     }
+    
 }

@@ -3,43 +3,34 @@
 }
 
 
-<header class="rectangle7">
-<h1>Cambiando el mundo, una mente a la vez</h1>
+<header class="rectangle7 text-center d-flex flex-column justify-content-center align-items-center" style="background-size: cover; background-position: center;">
+    <div class="h1" style="font-size: 76px;">Cambiando el mundo, <br> una mente a la vez</div>
 </header>
 
 
 <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="https://www.fundacionkonex.org/custom/web/data/imagenes/repositorio/2021/03/12/16575/2021031202544061e0e3f25c3041f849de6b510817fb34.jpg">
-                        <h4 class="card-subtitle mb-2 text-muted">Elias Cohen</h4>
-                        <p class="card-text">“Feliz de haber finalizado los cursos, gracias a todo el equipo de ClassVibes, Muy pronto ya estare arrancando el...”</p>
+        <swiper-container slides-per-view="3" speed="500" loop="true" pagination="true" navigation="true" class="mySwiper">
+            @foreach (var Reseña in ViewBag.Reseñas)
+            {
+                <swiper-slide>
+                    <div class="card" style="height: 300px;border-radius: 16px;">
+                        <div class="px-4 py-3 text-center">
+                            <img src="@(string.IsNullOrEmpty(Reseña.Usuario.fotoPerfil) ? "/img/avatar.jpg" : Reseña.Usuario.fotoPerfil)" alt="Imagen de @Reseña.Usuario.Nombre" style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover;" />
+                            <h4 class="card-subtitle my-2 text-muted">@Reseña.Usuario.Nombre</h4>
+                            <p class="card-text">@Reseña.Texto</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQElsvu1S78nmQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1711577985826?e=2147483647&v=beta&t=HCuocVsAr5AH5-gcicQrJGkK1gQx6XPJDOudrEELp80">
-                        <h4 class="card-subtitle mb-2 text-muted">Geronimo Benavides</h4>
-                        <p class="card-text">“Excelentes cursos, acualizados. con profesores muy completos que profundizan cada tema abordado. Un lujo total, recomiendo”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="https://images2-megamedia.cdn.mdstrm.com/etcetera/2020/03/25/10447_1_5e7bc49c47397.jpg?d=500x500">
-                        <h4 class="card-subtitle mb-2 text-muted">Eduardo Garza</h4>
-                        <p class="card-text">“Muy buenas las clases de matemática, no sabia nada y ahora soy pitagoras. Agregaria distintos metodos de estudio para elegir”</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </swiper-slide>
+            }
+        </swiper-container>
+</div>
 
-<ul class="nav-links">
-  <li><a href="@Url.Action("Reseñas", "Home")">Ver reseñas</a></li>
-</ul>
+
+<div class="d-flex justify-content-center my-5">
+  <a href="@Url.Action("Reseñas", "Home")" class="btn btn-success">Ver todas reseñas</a>
+</div>
+
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Editar Curso";
+}
+
+<div class="container mt-4" >
+
+<h1>Editar Curso</h1>
+
+<form asp-action="EditarCurso" method="post" style="height: 100vh;">
+    <input type="hidden" name="idCurso" value="@Model.idCurso" />
+    <div class="form-group">
+        <label for="idProfesor">ID Profesor</label>
+        <input type="text" class="form-control" id="idProfesor" name="idProfesor" value="@Model.idProfesor" required />
+    </div>
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required />
+    </div>
+    <div class="form-group">
+        <label for="Precio">Precio</label>
+        <input type="text" class="form-control" id="Precio" name="Precio" value="@Model.Precio"  required />
+    </div>
+    <div class="form-group">
+        <label for="MetodoPago">Método de Pago</label>
+        <select class="form-control" id="MetodoPago" name="MetodoPago" required>
+            <option value="Gratis"  selected="@(Model.MetodoPago == "Gratis")">Gratis</option>
+            <option value="Pago" selected="@(Model.MetodoPago == "Pago")">Pago</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Materia">Materia</label>
+        <input type="text" class="form-control" id="Materia" name="Materia" value="@Model.Materia" required />
+    </div>
+    <div class="form-group">
+        <label for="AnioSecundaria">Año Secundaria</label>
+        <input type="number" class="form-control" id="AnioSecundaria" name="AnioSecundaria" value="@Model.AnioSecundaria" required />
+    </div>
+    <div class="form-group">
+        <label for="Valoracion">Valoración</label>
+        <input type="text" class="form-control" id="Valoracion" name="Valoracion" value="@Model.Valoracion"  required />
+    </div>
+    <div class="form-group">
+        <label for="cantAlumnos">Cantidad de Alumnos</label>
+        <input type="number" class="form-control" id="cantAlumnos" name="cantAlumnos" value="@Model.cantAlumnos" required />
+    </div>
+    <div class="form-group">
+        <label for="fotoCurso">Foto del Curso (URL)</label>
+        <input type="text" class="form-control" id="fotoCurso" name="fotoCurso" value="@Model.fotoCurso" required />
+    </div>
+    <div class="form-group">
+        <label for="Descripcion">Descripción</label>
+        <textarea class="form-control" id="Descripcion" name="Descripcion" rows="3" required>@Model.Descripcion</textarea>
+    </div>
+    <div class="form-group">
+        <label for="videoCurso">Video del Curso (URL)</label>
+        <input type="text" class="form-control" id="videoCurso" name="videoCurso" value="@Model.videoCurso" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-5">Guardar Cambios</button>
+    <a asp-action="Admin" class="btn btn-secondary mt-5">Cancelar</a>
+</form>
+
+</div>

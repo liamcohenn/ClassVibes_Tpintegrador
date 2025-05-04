@@ -2,73 +2,72 @@
     ViewData["Title"] = "Profesores";
 }
 
-<div class="filters-container">
-    <form method="get" action="/Home/Profesores" class="filters-form">
+<div class="row mt-4">
+<div class="filters-container col-md-4 col-12">
+    <form method="post" action="/Home/Profesores" class="filters-form">
         <!-- Filtro de Valoraciones -->
-        <div class="filter-section">
-            <h3>Valoraciones</h3>
-            <div>
-                <input type="radio" id="rating4" name="rating" value="4">
-                <label for="rating4">4 o más ★★★★</label>
-            </div>
-            <div>
-                <input type="radio" id="rating3" name="rating" value="3">
-                <label for="rating3">3 o más ★★★</label>
-            </div>
-            <div>
-                <input type="radio" id="rating2" name="rating" value="2">
-                <label for="rating2">2 o más ★★</label>
-            </div>
-        </div>
+        <div class="filter-section mb-3">
+                <h3 class="text-center">Valoraciones</h3>
+                <input type="radio" id="rating4" name="rating" value="4" @(ViewBag.SelectedRating == "4" ? "checked" : "")>
+                <label for="rating4" class="ms-3" style="font-size: 26px;">4 o más <span class="text-warning">★★★★</span>★</label><br>
+
+                <input type="radio" id="rating3" name="rating" value="3" @(ViewBag.SelectedRating == "3" ? "checked" : "")>
+                <label for="rating3"  class="ms-3" style="font-size: 26px;">3 o más <span class="text-warning">★★★</span>★</label><br>
+
+                <input type="radio" id="rating2" name="rating" value="2" @(ViewBag.SelectedRating == "2" ? "checked" : "")>
+                <label for="rating2"  class="ms-3" style="font-size: 26px;">2 o más <span class="text-warning">★★</span>★</label><br>
+            </div> 
 
         <!-- Filtro de Popularidad -->
-        <div class="filter-section">
-            <h3>Mas populares</h3>
+        <div class="filter-section mb-3">
+            <h3 class="text-center">Mas populares</h3>
             <div>
-                <input type="radio" id="popularity1M" name="popularity" value="1000000">
-                <label for="popularity1M">+1.000.000 búsquedas</label>
+                <input type="radio" id="popularity1M" name="popularity" value="1000000" @(ViewBag.Selectedpopularity == 1000000 ? "checked" : "")>
+                <label for="popularity1M" class="ms-3" style="font-size: 22px;">+1.000.000 búsquedas</label>
             </div>
             <div>
-                <input type="radio" id="popularity500K" name="popularity" value="500000">
-                <label for="popularity500K">+500.000 búsquedas</label>
+                <input type="radio" id="popularity500K" name="popularity" value="500000" @(ViewBag.Selectedpopularity == 500000 ? "checked" : "")>
+                <label for="popularity500K" class="ms-3" style="font-size: 22px;">+500.000 búsquedas</label>
             </div>
             <div>
-                <input type="radio" id="popularity100K" name="popularity" value="100000">
-                <label for="popularity100K">+100.000 búsquedas</label>
+                <input type="radio" id="popularity100K" name="popularity" value="100000" @(ViewBag.Selectedpopularity == 100000 ? "checked" : "")>
+                <label for="popularity100K" class="ms-3" style="font-size: 22px;">+100.000 búsquedas</label>
             </div>
         </div>
 
         <!-- Filtro de Materias -->
-        <div class="filter-section">
-            <h3>Materias</h3>
-            <div>
-                <input type="checkbox" id="subjectMath" name="subject" value="Matematica">
-                <label for="subjectMath">Matemática</label>
-            </div>
-            <div>
-                <input type="checkbox" id="subjectPhysics" name="subject" value="Fisica">
-                <label for="subjectPhysics">Física</label>
-            </div>
-            <div>
-                <input type="checkbox" id="subjectProgramming" name="subject" value="Programacion">
-                <label for="subjectProgramming">Programación</label>
-            </div>
-        </div>
+            <div class="filter-section mb-3">
+                <h3 class="text-center">Materias</h3>
+                <input type="checkbox" id="Matematica" name="subject" value="Matemáticas"
+                    @(ViewBag.SelectedSubjects != null && ((string[])ViewBag.SelectedSubjects).Contains("Matemáticas") ? "checked" : "")>
+                <label for="Matematica" style="font-size: 22px;">Matemática</label><br>
 
-        <!-- Botón de filtro -->
-        <div class="filter-actions">
-            <button type="submit">Aplicar filtros</button>
-        </div>
+                <input type="checkbox" id="Fisica" name="subject" value="Física"
+                    @(ViewBag.SelectedSubjects != null && ((string[])ViewBag.SelectedSubjects).Contains("Física") ? "checked" : "")>
+                <label for="Fisica" style="font-size: 22px;">Física</label><br>
+
+                <input type="checkbox" id="Programacion" name="subject" value="Programacion"
+                    @(ViewBag.SelectedSubjects != null && ((string[])ViewBag.SelectedSubjects).Contains("Programacion") ? "checked" : "")>
+                <label for="Programacion" style="font-size: 22px;">Programación</label><br>
+
+            </div>
+
+       <!-- Botón de filtro -->
+            <div class="filter-actions mt-3">
+                <a href="/Home/Profesores" class="btn btn-danger">Limpiar Filtros</a>
+                <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+            </div>
     </form>
 </div>
-
-    @foreach (var profesor in ViewBag.Profesores)
+    <div class="col-md-8 col-12">
+        <div class="row">
+                @foreach (var profesor in ViewBag.Profesores)
     {
-        <div class="col-md-4">
-            <div class="profesor-foto-card">
-                <img src="@profesor.fotoPerfil" alt="Foto de @profesor.Nombre">
+        <div class="col-md-12 row mb-4">
+            <div class="profesor-foto-card col-4 mx-4" style="height: 200px;width: 200px;">
+                <img src="@(string.IsNullOrEmpty(profesor.fotoPerfil) ? "/img/avatar.jpg" : profesor.fotoPerfil)" alt="Foto de @profesor.Nombre" style="width: 100%;height: 100%;border-radius: 50%;object-fit: cover;">
             </div>
-            <div class="profesor-info-card">
+            <div class="profesor-info-card col-8">
                 <h5>Nombre: @profesor.Nombre</h5>
                 <p>Materia: @profesor.Materia</p>
                 <p>Calificación: @profesor.Valoracion/5</p>
@@ -78,3 +77,9 @@
         </div>
         
     }
+        </div>
+
+    </div>
+
+</div>
+    

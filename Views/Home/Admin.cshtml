@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="container mt-4" style="min-height: 100vh;">
+
+<h1>Lista de Cursos</h1>
+<a href="/Home/CrearCurso" class="btn btn-primary">Crear Nuevo Curso</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Metodo de Pago</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var curso in ViewBag.Cursos)
+        {
+            <tr>
+                <td>@curso.Nombre</td>
+                <td>@(curso.Precio == 0 ? "Gratis" : $"${curso.Precio}")</td>
+                <td>@curso.MetodoPago</td>
+                <td class="d-flex gap-2">
+                    <a href="/Home/EditarCurso?idCurso=@curso.idCurso" class="btn btn-warning">Editar</a>
+                    <a href="/Home/EliminarCurso?idCurso=@curso.idCurso" class="btn btn-danger">Eliminar</a>
+                    @* <form action="/Home/EliminarCurso" method="post">
+                      <input type="hidden" name="idCurso" value="@curso.idCurso" />
+                      <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form> *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
